@@ -7,8 +7,8 @@ const app = express();
 app.use(cors());
 app.use((bodyParser.json()));
 // db url set
-
-const DB_URL ='mongodb+srv://test:test123@cluster0.1jqzaiu.mongodb.net/test?retryWrites=true&w=majority'
+const DB_URL="mongodb://127.0.0.1:27017/test";
+//const DB_URL ='mongodb+srv://test:test123@cluster0.1jqzaiu.mongodb.net/test?retryWrites=true&w=majority'
  const PORT= process.env.PORT || 8070; // create port 
 
 app.listen(PORT, () =>{  // check server conection 

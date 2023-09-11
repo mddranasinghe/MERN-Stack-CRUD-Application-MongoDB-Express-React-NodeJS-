@@ -30,7 +30,7 @@ console.log(err);
 
 
 //viwe students details..................................
-router,route("/").get((req,res)=>{
+router.route("/").get((req,res)=>{
 
  Student.find().then((studentFunc)=>{
     res.json(studentFunc)
@@ -55,7 +55,7 @@ const updateStudents ={
 };
 const update=await Student.findByIdAndUpdate(userId,updateStudents).then
 (()=>{
-res.status(200).send({status :"user updated",user:update})
+res.status(200).send({status :"user updated"})
 }).catch((err)=>{
 
     console.log(err);
@@ -65,7 +65,19 @@ res.status(200).send({status :"user updated",user:update})
 
 
 
+router.route("/delete/:id").delete(async (req, res)=>
+{
+let userId= req.params.id;
 
+await Student.findByIdAndDelete(userId).then(()=>{
+    res.status(200).send({status :"User deleted"});
+}).catch((err)=>{
+
+    console.log(err.message);
+    res.status(500).send({status:"erro with delect user"});
+});
+
+});
 
 
 
